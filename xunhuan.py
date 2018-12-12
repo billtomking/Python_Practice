@@ -1,0 +1,5 @@
+v = input()
+int(True)
+print(v)
+float(v)
+print(v)
