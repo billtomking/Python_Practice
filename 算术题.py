@@ -34,8 +34,6 @@ while i <= 10 :
             print('错误,正确答案是' + str(c) + '\n')
             w +=1
     elif s ==3:
-        a = random.randint(1,10)
-        b = random.randint(1,10)
         print(str(a) + "*" + str(b) + "=")
         c = a * b
         d = input()
@@ -48,7 +46,7 @@ while i <= 10 :
             print('错误,正确答案是' + str(c) + '\n')
             w +=1
     elif s ==4:
-        shang = random.randint(1,10)
+        shang = random.randint(-20,20)
         c = shang
         print(str(shang * a) + "/" + str(a) + "=")
         d = input()

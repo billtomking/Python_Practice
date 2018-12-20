@@ -1,0 +1,50 @@
+Python 3.7.0 (v3.7.0:1bf9cc5093, Jun 27 2018, 04:06:47) [MSC v.1914 32 bit (Intel)] on win32
+Type "copyright", "credits" or "license()" for more information.
+>>> p = [ab,cd,ef,gh]
+Traceback (most recent call last):
+  File "<pyshell#0>", line 1, in <module>
+    p = [ab,cd,ef,gh]
+NameError: name 'ab' is not defined
+>>> p=['ab','cd','ef','gh']
+>>> p=dict(p)
+>>> p
+{'a': 'b', 'c': 'd', 'e': 'f', 'g': 'h'}
+>>> 'b' in p
+False
+>>> 'c' in p
+True
+>>> p.key()
+Traceback (most recent call last):
+  File "<pyshell#6>", line 1, in <module>
+    p.key()
+AttributeError: 'dict' object has no attribute 'key'
+>>> p.keys()
+dict_keys(['a', 'c', 'e', 'g'])
+>>> p.values()
+dict_values(['b', 'd', 'f', 'h'])
+>>> k = p.copy()
+>>> k
+{'a': 'b', 'c': 'd', 'e': 'f', 'g': 'h'}
+>>> p.items()
+dict_items([('a', 'b'), ('c', 'd'), ('e', 'f'), ('g', 'h')])
+>>> set('qwertyui')
+{'r', 't', 'i', 'y', 'e', 'u', 'q', 'w'}
+>>> a=set('qwertyasdfgh')
+>>> b=set('rtyuiopfghjkl')
+>>> c=a&b
+>>> c
+{'r', 't', 'y', 'h', 'f', 'g'}
+>>> c=a|b
+>>> c
+{'i', 'y', 'e', 'f', 'q', 'w', 's', 'd', 'r', 't', 'j', 'k', 'p', 'l', 'h', 'o', 'u', 'g', 'a'}
+>>> c= a^b
+>>> c
+{'j', 'k', 'p', 'l', 'i', 'e', 'o', 'a', 'u', 'q', 'w', 's', 'd'}
+>>> a<=b
+False
+>>> a>=b
+False
+>>> b=a
+>>> b==a
+True
+>>> 
