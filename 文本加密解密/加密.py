@@ -235,7 +235,7 @@ def shutozi(yuan):#用于将计算结果转换成文字
         return 'Y'
     elif yuan == '35':
         return 'Z'
-mi_yao = chuang_yao(12)
+mi_yao = chuang_yao(6)
 while n < len(mi_yao):#将密钥转换成数字
     mi_yao[n] = zitoshu(mi_yao[n])
     n += 1
@@ -243,5 +243,27 @@ n = 0
 while n < len(ming_wen):#将明文转换成数字
     ming_wen[n] = zitoshu(ming_wen[n])
     n += 1
-
-print(mi_yao)
+i = 0
+n = 0
+for i in ming_wen:#加密部分
+    k = mi_yao[n]
+    if n < len(mi_yao):
+        mi = (k - i)
+        if mi < 0:
+            mi += 36
+        mi_wen.append(mi)
+        n += 1
+    elif n >= len(mi_yao):
+        n = 0
+n = 0
+while n < len(mi_wen):#密文数字转文字
+    mi_wen[n] = shutozi(mi_wen[n])
+    n += 1
+n = 0
+while n < len(mi_yao):#密钥数字转文字
+    mi_yao[n] = shutozi(mi_yao[n])
+    n += 1
+print('密钥是' + ' ')
+print(mi_yao)#要找方法将列表转换成字符串
+print('密文是：' + ' ')
+print(mi_wen)

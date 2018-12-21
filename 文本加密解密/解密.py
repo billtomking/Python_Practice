@@ -165,12 +165,14 @@ while m < wen:#将密文转换成数字
     m += 1
 i = 0
 k = 0
+n = 0
 ming = 0
 for i in mi_wen:#解密部分
     k = mi_yao[n]
     if n < yao:
         ming = (k + i)%36
         ming_wen.append(ming)
+        n += 1
     elif n >= yao:
         n = 0
 mingl = len(ming_wen)
