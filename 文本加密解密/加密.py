@@ -8,7 +8,7 @@ def chuang_yao(n):#用于产生随机密钥，之后可以考虑修改让用户�
     import random
     if n == None:
         n = int(mingl)
-    i = 0
+    i = 1
     mi_yao = []
     while i <= n:
         i +=1
@@ -246,15 +246,15 @@ while n < len(ming_wen):#将明文转换成数字
 i = 0
 n = 0
 for i in ming_wen:#加密部分
+    if n >= len(mi_yao):
+        n = 0
     k = mi_yao[n]
-    if n < len(mi_yao)-1:
+    if n < len(mi_yao):
         mi = (k - i)
         if mi < 0:
             mi += 36
         mi_wen.append(mi)
         n += 1
-    elif n >= len(mi_yao)-1:
-        n = 0
 n = 0
 while n < len(mi_wen):#密文数字转文字
     mi_wen[n] = shutozi(mi_wen[n])

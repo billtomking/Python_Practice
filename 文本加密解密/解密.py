@@ -168,13 +168,13 @@ k = 0
 n = 0
 ming = 0
 for i in mi_wen:#解密部分
+    if n >= yao:
+        n = 0
     k = mi_yao[n]
     if n < yao:
         ming = (k + i)%36
         ming_wen.append(ming)
         n += 1
-    elif n >= yao:
-        n = 0
 mingl = len(ming_wen)
 n = 0
 m = 0
