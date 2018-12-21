@@ -1,83 +1,86 @@
-mi_yao = input('请输入密钥')
-mi_yao = list(set(str(mi_yao)))
-mi_wen = input('请输入密文')
-mi_wen = list(set(str(mi_wen)))
+mi_yao = input('请输入密钥（带空格）')#在加密时自动生成随机密钥
+mi_yao = list(mi_yao.split())#不能拿用set（）来转换，因为set是无序的,希望找到不用输入时带空格的方法
+mi_wen = input('请输入密文(带空格)')
+mi_wen = list(mi_wen.split())
 yao = len(mi_yao)
 wen = len(mi_wen)
+ming_wen = []
+n = 0
+m = 0
 def zitoshu(yuan):#用于将密文转换成数字，以便后续计算
     yuan = str(yuan)
     if yuan == '0':
-        return '0'
+        return 0
     elif yuan == '1':
-        return '1'
+        return 1
     elif yuan == '2':
-        return '2'
+        return 2
     elif yuan == '3':
-        return '3'
+        return 3
     elif yuan == '4':
-        return '4'
+        return 4
     elif yuan == '5':
-        return '5'
+        return 5
     elif yuan == '6':
-        return '6'
+        return 6
     elif yuan == '7':
-        return '7'
+        return 7
     elif yuan == '8':
-        return '8'
+        return 8
     elif yuan == '9':
-        return '9'
+        return 9
     elif yuan == 'A':
-        return '10'
+        return 10
     elif yuan == 'B':
-        return '11'
+        return 11
     elif yuan == 'C':
-        return '12'
+        return 12
     elif yuan == 'D':
-        return '13'
+        return 13
     elif yuan == 'E':
-        return '14'
+        return 14
     elif yuan == 'F':
-        return '15'
+        return 15
     elif yuan == 'G':
-        return '16'
+        return 16
     elif yuan == 'H':
-        return '17'
+        return 17
     elif yuan == 'I':
-        return '18'
+        return 18
     elif yuan == 'J':
-        return '19'
+        return 19
     elif yuan == 'K':
-        return '20'
+        return 20
     elif yuan == 'L':
-        return '21'
+        return 21
     elif yuan == 'M':
-        return '22'
+        return 22
     elif yuan == 'N':
-        return '23'
+        return 23
     elif yuan == 'O':
-        return '24'
+        return 24
     elif yuan == 'P':
-        return '25'
+        return 25
     elif yuan == 'Q':
-        return '26'
+        return 26
     elif yuan == 'R':
-        return '27'
+        return 27
     elif yuan == 'S':
-        return '28'
+        return 28
     elif yuan == 'T':
-        return '29'
+        return 29
     elif yuan == 'U':
-        return '30'
+        return 30
     elif yuan == 'V':
-        return '31'
+        return 31
     elif yuan == 'W':
-        return '32'
+        return 32
     elif yuan == 'X':
-        return '33'
+        return 33
     elif yuan == 'Y':
-        return '34'
+        return 34
     elif yuan == 'Z':
-        return '35'
+        return 35
 def shutozi(yuan):#用于将计算结果转换成明文
     yuan = str(yuan)
     if yuan == '0':
@@ -152,4 +155,28 @@ def shutozi(yuan):#用于将计算结果转换成明文
         return 'Y'
     elif yuan == '35':
         return 'Z'
-print(mi_wen[2])
+while n < yao:
+    mi_yao[n] = zitoshu(mi_yao[n])
+    n += 1
+print(mi_yao)
+n=0
+while m < wen:
+    mi_wen[m] = zitoshu(mi_wen[m])
+    m += 1
+i = 0
+k = 0
+ming = 0
+for i in mi_wen:
+    k = mi_yao[n]
+    if n < yao:
+        ming = (k + i)%36
+        ming_wen.append(ming)
+    elif n >= yao:
+        n = 0
+mingl = len(ming_wen)
+n = 0
+m = 0
+while m < mingl:
+    ming_wen[m] = shutozi(ming_wen[m])
+    m += 1
+print(ming_wen)
