@@ -1,7 +1,7 @@
 ming_wen = input('请输入明文（带空格）')
 ming_wen = list(ming_wen.split())
 mingl = len(ming_wen)
-def chuang_yao(n):#用于产生随机密钥，之后可以考虑让用户自行输入
+def chuang_yao(n):#用于产生随机密钥，之后可以考虑修改让用户自行输入
     import random
     if n == None:
         n = int(mingl)
