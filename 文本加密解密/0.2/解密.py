@@ -1,10 +1,23 @@
-mi_yao = input('请输入密钥（带空格）')  # 在加密时自动生成随机密钥
+import itertools
+mi_yao = input('请输入密钥（只限于英文字母与数字）')  # 在加密时自动生成随机密钥
 mi_yao = mi_yao.upper()
-mi_yao = list(mi_yao.split())  # 不能拿用set（）来转换，因为set是无序的,希望找到不用输入时带空格的方法
 
-mi_wen = input('请输入密文(带空格)')
+z = []
+n = 0
+while n < len(mi_yao):
+    z.append(mi_yao[n])
+    n += 1
+mi_yao = z
+
+mi_wen = input('请输入密文(只限于英文字母与数字)')
 mi_wen = mi_wen.upper()
-mi_wen = list(mi_wen.split())
+
+z = []
+n = 0
+while n < len(mi_wen):
+    z.append(mi_wen[n])
+    n += 1
+mi_wen = z
 
 yao = len(mi_yao)
 wen = len(mi_wen)
@@ -177,7 +190,8 @@ i = 0
 k = 0
 n = 0
 ming = 0
-
+m = 0
+ 
 for i in mi_wen:  # 解密部分
     if n >= yao:
         n = 0
@@ -186,6 +200,7 @@ for i in mi_wen:  # 解密部分
         ming = (k + i) % 36
         ming_wen.append(ming)
         n += 1
+
 mingl = len(ming_wen)
 n = 0
 m = 0

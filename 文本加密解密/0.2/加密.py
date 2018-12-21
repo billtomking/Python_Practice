@@ -1,8 +1,16 @@
 # 之后应该可以将字数转换部分集合到一个函数里
-ming_wen = input('请输入明文（带空格）')
-ming_wen = ming_wen.upper()
-ming_wen = list(ming_wen.split())
+ming_wen = input('请输入明文（只限于英文字母与数字）')
 mingl = len(ming_wen)
+ming_wen = ming_wen.upper()
+
+z = []
+n = 0
+while n < mingl:
+    z.append(ming_wen[n])
+    n += 1
+ming_wen = z
+
+#ming_wen = list(ming_wen.split())
 mi_wen = []
 n = 0
 
@@ -258,7 +266,7 @@ while n < len(ming_wen):  # 将明文转换成数字
     n += 1
 i = 0
 n = 0
-
+m = 0
 
 for i in ming_wen:  # 加密部分
     if n >= len(mi_yao):
@@ -270,6 +278,7 @@ for i in ming_wen:  # 加密部分
             mi += 36
         mi_wen.append(mi)
         n += 1
+    m += 1
 n = 0
 
 
