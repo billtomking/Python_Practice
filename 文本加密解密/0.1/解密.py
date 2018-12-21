@@ -1,99 +1,19 @@
-# 之后应该可以将字数转换部分集合到一个函数里
-ming_wen = input('请输入明文（带空格）')
-ming_wen = ming_wen.upper()
-ming_wen = list(ming_wen.split())
-mingl = len(ming_wen)
-mi_wen = []
+mi_yao = input('请输入密钥（带空格）')  # 在加密时自动生成随机密钥
+mi_yao = mi_yao.upper()
+mi_yao = list(mi_yao.split())  # 不能拿用set（）来转换，因为set是无序的,希望找到不用输入时带空格的方法
+
+mi_wen = input('请输入密文(带空格)')
+mi_wen = mi_wen.upper()
+mi_wen = list(mi_wen.split())
+
+yao = len(mi_yao)
+wen = len(mi_wen)
+ming_wen = []
 n = 0
+m = 0
 
 
-def chuang_yao(n):  # 用于产生随机密钥，之后可以考虑修改让用户自行输入
-    import random
-    if n=='':
-        n = mingl
-    i = 1
-    n = int(n)
-    mi_yao = []
-    while i <= n:
-        i += 1
-        a = random.randint(0, 35)
-        if a == 0:
-            b = '0'
-        elif a == 1:
-            b = '1'
-        elif a == 2:
-            b = '2'
-        elif a == 3:
-            b = '3'
-        elif a == 4:
-            b = '4'
-        elif a == 5:
-            b = '5'
-        elif a == 6:
-            b = '6'
-        elif a == 7:
-            b = '7'
-        elif a == 8:
-            b = '8'
-        elif a == 9:
-            b = '9'
-        elif a == 10:
-            b = 'A'
-        elif a == 11:
-            b = 'B'
-        elif a == 12:
-            b = 'C'
-        elif a == 13:
-            b = 'D'
-        elif a == 14:
-            b = 'E'
-        elif a == 15:
-            b = 'F'
-        elif a == 16:
-            b = 'G'
-        elif a == 17:
-            b = 'H'
-        elif a == 18:
-            b = 'I'
-        elif a == 19:
-            b = 'J'
-        elif a == 20:
-            b = 'K'
-        elif a == 21:
-            b = 'L'
-        elif a == 22:
-            b = 'M'
-        elif a == 23:
-            b = 'N'
-        elif a == 24:
-            b = 'O'
-        elif a == 25:
-            b = 'P'
-        elif a == 26:
-            b = 'Q'
-        elif a == 27:
-            b = 'R'
-        elif a == 28:
-            b = 'S'
-        elif a == 29:
-            b = 'T'
-        elif a == 30:
-            b = 'U'
-        elif a == 31:
-            b = 'V'
-        elif a == 32:
-            b = 'W'
-        elif a == 33:
-            b = 'X'
-        elif a == 34:
-            b = 'Y'
-        elif a == 35:
-            b = 'Z'
-        mi_yao.append(str(b))
-    return mi_yao
-
-
-def zitoshu(yuan):  # 用于将文字转换成数字，以便后续计算
+def zitoshu(yuan):  # 用于将密文转换成数字，以便后续计算
     yuan = str(yuan)
     if yuan == '0':
         return 0
@@ -169,7 +89,7 @@ def zitoshu(yuan):  # 用于将文字转换成数字，以便后续计算
         return 35
 
 
-def shutozi(yuan):  # 用于将计算结果转换成文字
+def shutozi(yuan):  # 用于将计算结果转换成明文
     yuan = str(yuan)
     if yuan == '0':
         return '0'
@@ -244,47 +164,35 @@ def shutozi(yuan):  # 用于将计算结果转换成文字
     elif yuan == '35':
         return 'Z'
 
-mi_yao = chuang_yao(input('密钥长度')) 
 
-
-while n < len(mi_yao):  # 将密钥转换成数字
+while n < yao:  # 将密钥转换成数字
     mi_yao[n] = zitoshu(mi_yao[n])
     n += 1
 n = 0
 
-
-while n < len(ming_wen):  # 将明文转换成数字
-    ming_wen[n] = zitoshu(ming_wen[n])
-    n += 1
+while m < wen:  # 将密文转换成数字
+    mi_wen[m] = zitoshu(mi_wen[m])
+    m += 1
 i = 0
+k = 0
 n = 0
+ming = 0
 
-
-for i in ming_wen:  # 加密部分
-    if n >= len(mi_yao):
+for i in mi_wen:  # 解密部分
+    if n >= yao:
         n = 0
     k = mi_yao[n]
-    if n < len(mi_yao):
-        mi = (i - k)
-        if mi < 0:
-            mi += 36
-        mi_wen.append(mi)
+    if n < yao:
+        ming = (k + i) % 36
+        ming_wen.append(ming)
         n += 1
+mingl = len(ming_wen)
 n = 0
+m = 0
 
+while m < mingl:  # 明文数字转文字
+    ming_wen[m] = shutozi(ming_wen[m])
+    m += 1
 
-while n < len(mi_wen):  # 密文数字转文字
-    mi_wen[n] = shutozi(mi_wen[n])
-    n += 1
-n = 0
-
-
-while n < len(mi_yao):  # 密钥数字转文字
-    mi_yao[n] = shutozi(mi_yao[n])
-    n += 1
-
-
-print('密钥是' + '')
-print(mi_yao)  # 要找方法将列表转换成字符串
-print('密文是：' + ' ')
-print(mi_wen)
+ming_wen = ''.join(ming_wen)
+print(ming_wen)

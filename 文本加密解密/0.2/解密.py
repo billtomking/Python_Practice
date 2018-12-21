@@ -168,8 +168,8 @@ def shutozi(yuan):  # 用于将计算结果转换成明文
 while n < yao:  # 将密钥转换成数字
     mi_yao[n] = zitoshu(mi_yao[n])
     n += 1
-print(mi_yao)
 n = 0
+
 while m < wen:  # 将密文转换成数字
     mi_wen[m] = zitoshu(mi_wen[m])
     m += 1
@@ -177,6 +177,7 @@ i = 0
 k = 0
 n = 0
 ming = 0
+
 for i in mi_wen:  # 解密部分
     if n >= yao:
         n = 0
@@ -188,7 +189,10 @@ for i in mi_wen:  # 解密部分
 mingl = len(ming_wen)
 n = 0
 m = 0
+
 while m < mingl:  # 明文数字转文字
     ming_wen[m] = shutozi(ming_wen[m])
     m += 1
+
+ming_wen = ''.join(ming_wen)
 print(ming_wen)
