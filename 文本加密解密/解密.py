@@ -176,7 +176,7 @@ for i in mi_wen:#解密部分
 mingl = len(ming_wen)
 n = 0
 m = 0
-while m < mingl:
+while m < mingl:#明文数字转文字
     ming_wen[m] = shutozi(ming_wen[m])
     m += 1
 print(ming_wen)
