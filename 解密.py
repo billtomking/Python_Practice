@@ -155,18 +155,18 @@ def shutozi(yuan):#用于将计算结果转换成明文
         return 'Y'
     elif yuan == '35':
         return 'Z'
-while n < yao:
+while n < yao:#将密钥转换成数字
     mi_yao[n] = zitoshu(mi_yao[n])
     n += 1
 print(mi_yao)
 n=0
-while m < wen:
+while m < wen:#将密文转换成数字
     mi_wen[m] = zitoshu(mi_wen[m])
     m += 1
 i = 0
 k = 0
 ming = 0
-for i in mi_wen:
+for i in mi_wen:#解密部分
     k = mi_yao[n]
     if n < yao:
         ming = (k + i)%36
