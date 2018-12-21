@@ -1,13 +1,19 @@
-mi_yao = input('请输入密钥（带空格）')#在加密时自动生成随机密钥
-mi_yao = list(mi_yao.split())#不能拿用set（）来转换，因为set是无序的,希望找到不用输入时带空格的方法
+mi_yao = input('请输入密钥（带空格）')  # 在加密时自动生成随机密钥
+mi_yao = mi_yao.upper()
+mi_yao = list(mi_yao.split())  # 不能拿用set（）来转换，因为set是无序的,希望找到不用输入时带空格的方法
+
 mi_wen = input('请输入密文(带空格)')
+mi_wen = mi_wen.upper()
 mi_wen = list(mi_wen.split())
+
 yao = len(mi_yao)
 wen = len(mi_wen)
 ming_wen = []
 n = 0
 m = 0
-def zitoshu(yuan):#用于将密文转换成数字，以便后续计算
+
+
+def zitoshu(yuan):  # 用于将密文转换成数字，以便后续计算
     yuan = str(yuan)
     if yuan == '0':
         return 0
@@ -81,7 +87,9 @@ def zitoshu(yuan):#用于将密文转换成数字，以便后续计算
         return 34
     elif yuan == 'Z':
         return 35
-def shutozi(yuan):#用于将计算结果转换成明文
+
+
+def shutozi(yuan):  # 用于将计算结果转换成明文
     yuan = str(yuan)
     if yuan == '0':
         return '0'
@@ -155,30 +163,32 @@ def shutozi(yuan):#用于将计算结果转换成明文
         return 'Y'
     elif yuan == '35':
         return 'Z'
-while n < yao:#将密钥转换成数字
+
+
+while n < yao:  # 将密钥转换成数字
     mi_yao[n] = zitoshu(mi_yao[n])
     n += 1
 print(mi_yao)
-n=0
-while m < wen:#将密文转换成数字
+n = 0
+while m < wen:  # 将密文转换成数字
     mi_wen[m] = zitoshu(mi_wen[m])
     m += 1
 i = 0
 k = 0
 n = 0
 ming = 0
-for i in mi_wen:#解密部分
+for i in mi_wen:  # 解密部分
     if n >= yao:
         n = 0
     k = mi_yao[n]
     if n < yao:
-        ming = (k + i)%36
+        ming = (k + i) % 36
         ming_wen.append(ming)
         n += 1
 mingl = len(ming_wen)
 n = 0
 m = 0
-while m < mingl:#明文数字转文字
+while m < mingl:  # 明文数字转文字
     ming_wen[m] = shutozi(ming_wen[m])
     m += 1
 print(ming_wen)

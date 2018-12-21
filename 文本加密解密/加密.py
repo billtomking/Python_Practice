@@ -1,18 +1,22 @@
-#之后应该可以将字数转换部分集合到一个函数里
+# 之后应该可以将字数转换部分集合到一个函数里
 ming_wen = input('请输入明文（带空格）')
+ming_wen = ming_wen.upper()
 ming_wen = list(ming_wen.split())
 mingl = len(ming_wen)
 mi_wen = []
 n = 0
-def chuang_yao(n):#用于产生随机密钥，之后可以考虑修改让用户自行输入
+
+
+def chuang_yao(n):  # 用于产生随机密钥，之后可以考虑修改让用户自行输入
     import random
-    if n == None:
-        n = int(mingl)
+    if n=='':
+        n = mingl
     i = 1
+    n = int(n)
     mi_yao = []
     while i <= n:
-        i +=1
-        a = random.randint(0,35)
+        i += 1
+        a = random.randint(0, 35)
         if a == 0:
             b = '0'
         elif a == 1:
@@ -87,7 +91,9 @@ def chuang_yao(n):#用于产生随机密钥，之后可以考虑修改让用户�
             b = 'Z'
         mi_yao.append(str(b))
     return mi_yao
-def zitoshu(yuan):#用于将文字转换成数字，以便后续计算
+
+
+def zitoshu(yuan):  # 用于将文字转换成数字，以便后续计算
     yuan = str(yuan)
     if yuan == '0':
         return 0
@@ -161,7 +167,9 @@ def zitoshu(yuan):#用于将文字转换成数字，以便后续计算
         return 34
     elif yuan == 'Z':
         return 35
-def shutozi(yuan):#用于将计算结果转换成文字
+
+
+def shutozi(yuan):  # 用于将计算结果转换成文字
     yuan = str(yuan)
     if yuan == '0':
         return '0'
@@ -235,35 +243,48 @@ def shutozi(yuan):#用于将计算结果转换成文字
         return 'Y'
     elif yuan == '35':
         return 'Z'
-mi_yao = chuang_yao(1)#设置密钥长度，以后会改进
-while n < len(mi_yao):#将密钥转换成数字
+
+mi_yao = chuang_yao(input('密钥长度')) 
+
+
+while n < len(mi_yao):  # 将密钥转换成数字
     mi_yao[n] = zitoshu(mi_yao[n])
     n += 1
 n = 0
-while n < len(ming_wen):#将明文转换成数字
+
+
+while n < len(ming_wen):  # 将明文转换成数字
     ming_wen[n] = zitoshu(ming_wen[n])
     n += 1
 i = 0
 n = 0
-for i in ming_wen:#加密部分
+
+
+for i in ming_wen:  # 加密部分
     if n >= len(mi_yao):
         n = 0
     k = mi_yao[n]
     if n < len(mi_yao):
-        mi = (k - i)
+        mi = (i - k)
         if mi < 0:
             mi += 36
         mi_wen.append(mi)
         n += 1
 n = 0
-while n < len(mi_wen):#密文数字转文字
+
+
+while n < len(mi_wen):  # 密文数字转文字
     mi_wen[n] = shutozi(mi_wen[n])
     n += 1
 n = 0
-while n < len(mi_yao):#密钥数字转文字
+
+
+while n < len(mi_yao):  # 密钥数字转文字
     mi_yao[n] = shutozi(mi_yao[n])
     n += 1
-print('密钥是' + ' ')
-print(mi_yao)#要找方法将列表转换成字符串
+
+
+print('密钥是' + '')
+print(mi_yao)  # 要找方法将列表转换成字符串
 print('密文是：' + ' ')
 print(mi_wen)
