@@ -3,12 +3,14 @@ ming_wen = input('请输入明文（只限于英文字母与数字）')
 mingl = len(ming_wen)
 ming_wen = ming_wen.upper()
 
-z = []
+
+z = []#将明文打散成单字
 n = 0
 while n < mingl:
     z.append(ming_wen[n])
     n += 1
 ming_wen = z
+
 
 #ming_wen = list(ming_wen.split())
 mi_wen = []
@@ -252,7 +254,7 @@ def shutozi(yuan):  # 用于将计算结果转换成文字
     elif yuan == '35':
         return 'Z'
 
-mi_yao = chuang_yao(input('密钥长度')) 
+mi_yao = chuang_yao(input('密钥长度（可不填）')) 
 
 
 while n < len(mi_yao):  # 将密钥转换成数字
@@ -292,10 +294,10 @@ while n < len(mi_yao):  # 密钥数字转文字
     mi_yao[n] = shutozi(mi_yao[n])
     n += 1
 
-mi_yao = ''.join(mi_yao)
+mi_yao = ''.join(mi_yao)# 将列表转换成字符串
 mi_wen = ''.join(mi_wen)
 
 print('密钥是' + '')
-print(mi_yao)  # 要找方法将列表转换成字符串
+print(mi_yao)  
 print('密文是：' + ' ')
 print(mi_wen)
