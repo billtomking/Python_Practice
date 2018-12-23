@@ -26,165 +26,19 @@ n = 0
 m = 0
 
 
-def zitoshu(yuan):  # 用于将密文转换成数字，以便后续计算
-    yuan = str(yuan)
-    if yuan == '0':
-        return 0
-    elif yuan == '1':
-        return 1
-    elif yuan == '2':
-        return 2
-    elif yuan == '3':
-        return 3
-    elif yuan == '4':
-        return 4
-    elif yuan == '5':
-        return 5
-    elif yuan == '6':
-        return 6
-    elif yuan == '7':
-        return 7
-    elif yuan == '8':
-        return 8
-    elif yuan == '9':
-        return 9
-    elif yuan == 'A':
-        return 10
-    elif yuan == 'B':
-        return 11
-    elif yuan == 'C':
-        return 12
-    elif yuan == 'D':
-        return 13
-    elif yuan == 'E':
-        return 14
-    elif yuan == 'F':
-        return 15
-    elif yuan == 'G':
-        return 16
-    elif yuan == 'H':
-        return 17
-    elif yuan == 'I':
-        return 18
-    elif yuan == 'J':
-        return 19
-    elif yuan == 'K':
-        return 20
-    elif yuan == 'L':
-        return 21
-    elif yuan == 'M':
-        return 22
-    elif yuan == 'N':
-        return 23
-    elif yuan == 'O':
-        return 24
-    elif yuan == 'P':
-        return 25
-    elif yuan == 'Q':
-        return 26
-    elif yuan == 'R':
-        return 27
-    elif yuan == 'S':
-        return 28
-    elif yuan == 'T':
-        return 29
-    elif yuan == 'U':
-        return 30
-    elif yuan == 'V':
-        return 31
-    elif yuan == 'W':
-        return 32
-    elif yuan == 'X':
-        return 33
-    elif yuan == 'Y':
-        return 34
-    elif yuan == 'Z':
-        return 35
 
+zitoshu = {'0':0,'1':1,'2':2,'3':3,'4':4,'5':5,'6':6,'7':7,'8':8,'9':9,'A':10,'B':11,'C':12,'D':13,'E':14,'F':15,'G':16,'H':17,'I':18,'J':19,'K':20,'L':21,'M':22,'N':23,'O':24,'P':25,'Q':26,'R':27,'S':28,'T':29,'U':30,'V':31,'W':32,'X':33,'Y':34,'Z':35}
 
-def shutozi(yuan):  # 用于将计算结果转换成明文
-    yuan = str(yuan)
-    if yuan == '0':
-        return '0'
-    elif yuan == '1':
-        return '1'
-    elif yuan == '2':
-        return '2'
-    elif yuan == '3':
-        return '3'
-    elif yuan == '4':
-        return '4'
-    elif yuan == '5':
-        return '5'
-    elif yuan == '6':
-        return '6'
-    elif yuan == '7':
-        return '7'
-    elif yuan == '8':
-        return '8'
-    elif yuan == '9':
-        return '9'
-    elif yuan == '10':
-        return 'A'
-    elif yuan == '11':
-        return 'B'
-    elif yuan == '12':
-        return 'C'
-    elif yuan == '13':
-        return 'D'
-    elif yuan == '14':
-        return 'E'
-    elif yuan == '15':
-        return 'F'
-    elif yuan == '16':
-        return 'G'
-    elif yuan == '17':
-        return 'H'
-    elif yuan == '18':
-        return 'I'
-    elif yuan == '19':
-        return 'J'
-    elif yuan == '20':
-        return 'K'
-    elif yuan == '21':
-        return 'L'
-    elif yuan == '22':
-        return 'M'
-    elif yuan == '23':
-        return 'N'
-    elif yuan == '24':
-        return 'O'
-    elif yuan == '25':
-        return 'P'
-    elif yuan == '26':
-        return 'Q'
-    elif yuan == '27':
-        return 'R'
-    elif yuan == '28':
-        return 'S'
-    elif yuan == '29':
-        return 'T'
-    elif yuan == '30':
-        return 'U'
-    elif yuan == '31':
-        return 'V'
-    elif yuan == '32':
-        return 'W'
-    elif yuan == '33':
-        return 'X'
-    elif yuan == '34':
-        return 'Y'
-    elif yuan == '35':
-        return 'Z'
+shutozi = {1:'1',2:'2',3:'3',4:'4',5:'5',6:'6',7:'7',8:'8',9:'9',0:'0',10:'A',11:'B',12:'C',13:'D',14:'E',15:'F',16:'G',17:'H',18:'I',19:'J',20:'K',21:'L',22:'M',23:'N',24:'O',25:'P',26:'Q',27:'R',28:'S',29:'T',30:'U',31:'V',32:'W',33:'X',34:'Y',35:'Z'}
 
 
 while n < yao:  # 将密钥转换成数字
-    mi_yao[n] = zitoshu(mi_yao[n])
+    mi_yao[n] = zitoshu[mi_yao[n]]
     n += 1
 n = 0
 
 while m < wen:  # 将密文转换成数字
-    mi_wen[m] = zitoshu(mi_wen[m])
+    mi_wen[m] = zitoshu[mi_wen[m]]
     m += 1
 i = 0
 k = 0
@@ -206,7 +60,7 @@ n = 0
 m = 0
 
 while m < mingl:  # 明文数字转文字
-    ming_wen[m] = shutozi(ming_wen[m])
+    ming_wen[m] = shutozi[ming_wen[m]]
     m += 1
 
 ming_wen = ''.join(ming_wen)
