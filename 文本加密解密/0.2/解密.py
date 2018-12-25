@@ -11,9 +11,7 @@ def da_san(wen):#打散字符
     n = 0
     z = []
     wen = wen.upper()
-    while n < len(wen):
-        z.append(wen[n])
-        n += 1
+    z = list(wen)
     return z
 
 
