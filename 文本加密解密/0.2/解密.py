@@ -38,7 +38,12 @@ def yan_zheng(wen):#用于验证字符串合法性
     else:
         return 1
 
-
+print('说明：')
+print('-' *40)
+print('该程序可以实现对相应加密软件的加密结果的解密')
+print('合法字符为英文字母、数字以及‘-’符号')
+print('-' *40)
+n=input('Type anything to continue.')
 
 ming_wen = []
 
