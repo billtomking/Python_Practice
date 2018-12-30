@@ -9,7 +9,6 @@ he_fa = ['1','2','3','4','5','6','7','8','9','0','Q','W','E','R','T','Y','U','I'
 
 
 def da_san(wen):#打散字符
-    n = 0
     z = []
     wen = wen.upper()
     z = list(wen)
@@ -198,7 +197,7 @@ for i in ming_wen:  # 加密部分
     if n < len(mi_yao):
         mi = (i - k)
         if mi < 0:
-            mi += 37
+            mi += int(len(he_fa))
         mi_wen.append(mi)
         n += 1
     m += 1
@@ -207,17 +206,15 @@ for i in ming_wen:  # 加密部分
 n = 0
 
 
-while n < len(mi_wen):  # 密文数字转文字
+for n in range(len(mi_wen)):  # 密文数字转文字
     mi_wen[n] = shutozi[mi_wen[n]]
-    n += 1
 
 
 n = 0
 
 
-while n < len(mi_yao):  # 密钥数字转文字
+for n in range(len(mi_yao)):  # 密钥数字转文字
     mi_yao[n] = shutozi[mi_yao[n]]
-    n += 1
 
 mi_yao = ''.join(mi_yao)# 将列表转换成字符串
 mi_wen = ''.join(mi_wen)
@@ -231,4 +228,3 @@ print('')
 print('')
 
 n = input('Type anything to exit.')
-sys.exit()

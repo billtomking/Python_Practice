@@ -8,7 +8,6 @@ shutozi = {1:'1',2:'2',3:'3',4:'4',5:'5',6:'6',7:'7',8:'8',9:'9',0:'0',10:'A',11
 he_fa = ['1','2','3','4','5','6','7','8','9','0','Q','W','E','R','T','Y','U','I','O','P','A','S','D','F','G','H','J','K','L','Z','X','C','V','B','N','M','-']
 
 def da_san(wen):#打散字符
-    n = 0
     z = []
     wen = wen.upper()
     z = list(wen)
@@ -69,14 +68,17 @@ n = 0
 m = 0
 
 
-while n < len(mi_yao):  # 将密钥转换成数字
+for n in range(len(mi_yao)):  # 将密钥转换成数字
     mi_yao[n] = zitoshu[mi_yao[n]]
-    n += 1
+
+
 n = 0
 
-while m < len(mi_wen):  # 将密文转换成数字
-    mi_wen[m] = zitoshu[mi_wen[m]]
-    m += 1
+
+for n in range(len(mi_wen)):  # 将密文转换成数字
+    mi_wen[n] = zitoshu[mi_wen[n]]
+
+
 i = 0
 k = 0
 n = 0
@@ -106,5 +108,4 @@ print('明文是：')
 print(ming_wen)
 print("-" *40)
 
-input('Type anything to exit.')
-sys.exit()
+n = input('Type anything to exit.')
