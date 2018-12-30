@@ -1,4 +1,2 @@
-no = {'a':'alphl','b':'beta'}
-print(no)
-print('a')
-a=[]
+import qrcode
+img = qrcode.make('Some data here')
