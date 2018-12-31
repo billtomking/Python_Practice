@@ -1,3 +1,4 @@
+#随机下子
 import copy
 import random
 from time import time
@@ -46,7 +47,6 @@ def Yan(board):
             return
     else:
         return
-
 
 n=0
 x=0
