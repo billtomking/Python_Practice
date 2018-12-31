@@ -31,6 +31,11 @@ def Yan(board):
             return 1
         else:
             return
+    elif board['2'] == board['5'] and board['5'] == board['8']:
+        if board['3'] != ' ':
+            return 1
+        else:
+            return
     elif board['3'] == board['6'] and board['6'] == board['9']:
         if board['3'] != ' ':
             return 1
