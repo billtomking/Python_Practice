@@ -32,7 +32,7 @@ def Yan(board):
         else:
             return
     elif board['2'] == board['5'] and board['5'] == board['8']:
-        if board['3'] != ' ':
+        if board['2'] != ' ':
             return 1
         else:
             return
